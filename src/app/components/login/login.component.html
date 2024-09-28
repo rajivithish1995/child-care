@@ -1,57 +1,71 @@
-
-<section class="container-fluid" role="login">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <div class="row g-3">
-            <div class="col-md-12 mb-3">
-                <label for="firstName" class="form-label">First Name</label>
-                <input type="text" inputmode="text" formControlName="firstName" autofocus="true" tabindex="0" class="form-control" id="firstName" placeholder="John">
-              </div>
-              <div class="col-md-12 mb-3">
-                <label for="lastName" class="form-label">Last Name</label>
-                <input type="text" inputmode="text" formControlName="lastName" class="form-control" tabindex="0"  id="lastName" placeholder="Stewart">
-              </div>
-              <div class="col-md-12 mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" inputmode="email" formControlName="email"  class="form-control" id="email" tabindex="0"  placeholder="john@gmail.com">
-              </div>
-        
-              <div class="col-md-12 mb-3">
-                <label for="pass" class="form-label">Last Name</label>
-                <input type="password" inputmode="text" formControlName="email"  class="form-control" id="pass" tabindex="0"  placeholder="john@gmail.com">
-              </div>
-        </div>
-
-      <button type="button" class="btn btn-primary">Register</button>
+<!-- https://stackblitz.com/edit/angular-16-reactive-form-validation?file=src%2Fapp%2Fapp.component.ts -->
 
 
-      <!-- <div class="mb-3">
-        <label for="lastName" class="form-label">Last Name</label>
-        <textarea class="form-control" id="lastName" rows="3"></textarea>
-      </div> -->
-      
-      <!-- <div class="container">
-        <label for="name"> Name:</label>
-        <input id="name" formControlName="name" placeholder="Your name" />
-        <div *ngIf="f['name']['touched'] && f['name']['invalid']">
-          <span style="color: red;" *ngIf="f?.['name']?.['errors']?.['required']">Please provide a name</span>
-        </div>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="container mx-sm-auto w-25 mt-5">
+    <div class="row g-3 justify-content-center align-items-center">
+        <h2 class="mt-5 text-center">Login</h2>
+        <div class="col-md-12 mb-3">
+            <label for="firstName" class="form-label fw-semibold">First Name</label>
+            <input type="text" inputmode="text" formControlName="firstName" autofocus="true" tabindex="0" class="form-control"  [ngClass]="{ 'is-invalid': formSubmitted && f['firstName']['errors'] }" id="firstName" placeholder="John" >
+            <div *ngIf="formSubmitted && f['firstName']['errors']" class="invalid-feedback">
+                <div *ngIf="formSubmitted && f['firstName']['errors']">Fullname is required</div>
+              </div>
+          </div>
+          <div class="col-md-12 mb-3">
+            <label for="lastName" class="form-label fw-semibold">Last Name</label>
+            <input type="text" inputmode="text" formControlName="lastName" class="form-control" tabindex="0"  id="lastName" [ngClass]="{ 'is-invalid': formSubmitted && f['lastName']['errors'] }" placeholder="Stewart">
+            <div *ngIf="formSubmitted && f['lastName']['errors']" class="invalid-feedback">
+                <div *ngIf="formSubmitted && f['lastName']['errors']">Fullname is required</div>
+              </div>
+          </div>
+          <div class="col-md-12 mb-3">
+            <label for="email" class="form-label fw-semibold">Email</label>
+            <input type="email" inputmode="email" formControlName="email"  class="form-control" id="email" tabindex="0" [ngClass]="{ 'is-invalid': formSubmitted && f['email']['errors'] }"  placeholder="john@gmail.com">
+            <div *ngIf="formSubmitted && f['email']['errors']" class="invalid">
+                <div *ngIf="formSubmitted && f['email']['errors']">Fullname is required</div>
+              </div>
+          </div>
+    
+          <div class="col-md-12 mb-3">
+            <label for="pass" class="form-label fw-semibold">Password</label>
+            <input type="password" inputmode="text" formControlName="email"  class="form-control" id="pass" tabindex="0"  placeholder="">
+            <div *ngIf="formSubmitted && f['password']['errors']" class="invalid-feedback">
+                <div *ngIf="formSubmitted && f['password']['errors']">Fullname is required</div>
+              </div>
+          </div>
+    </div>
+    <div class="d-grid gap-2 d-md-block my-2">
+        <button class="btn btn-primary me-2" type="submit">Register</button>
+        <button class="btn btn-primary" type="button">Reset</button>
       </div>
-      <div class="container">
-        <label for="email"> Email: </label>
-        <input id="email" formControlName="email" placeholder="Your email" />
-        <div *ngIf="f['email']['touched'] && f['email']['invalid']">
-          <span style="color: red;" *ngIf="f?.['email']?.['errors']?.['required']">Please provide a email</span>
-          <span style="color: red;" *ngIf="f?.['email']?.['errors']?.['email']">Please provide a valid email</span>
-        </div>
-      </div>
-      <div class="container">
-        <label for="message">
-          Message:
-        </label>
-        <input id="message" formControlName="message" placeholder="Your message" />
-        <div *ngIf="f['message']['touched'] && f['message']['invalid']">
-          <span style="color: red;" *ngIf="f?.['message']?.['errors']?.['required']">Please provide a message</span>
-        </div>
-      </div> -->
-    </form>
-</section>
+
+  <!-- <div class="mb-3">
+    <label for="lastName" class="form-label">Last Name</label>
+    <textarea class="form-control" id="lastName" rows="3"></textarea>
+  </div> -->
+  
+  <!-- <div class="container">
+    <label for="name"> Name:</label>
+    <input id="name" formControlName="name" placeholder="Your name" />
+    <div *ngIf="f['name']['touched'] && f['name']['invalid']">
+      <span style="color: red;" *ngIf="f?.['name']?.['errors']?.['required']">Please provide a name</span>
+    </div>
+  </div>
+  <div class="container">
+    <label for="email"> Email: </label>
+    <input id="email" formControlName="email" placeholder="Your email" />
+    <div *ngIf="f['email']['touched'] && f['email']['invalid']">
+      <span style="color: red;" *ngIf="f?.['email']?.['errors']?.['required']">Please provide a email</span>
+      <span style="color: red;" *ngIf="f?.['email']?.['errors']?.['email']">Please provide a valid email</span>
+    </div>
+  </div>
+  <div class="container">
+    <label for="message">
+      Message:
+    </label>
+    <input id="message" formControlName="message" placeholder="Your message" />
+    <div *ngIf="f['message']['touched'] && f['message']['invalid']">
+      <span style="color: red;" *ngIf="f?.['message']?.['errors']?.['required']">Please provide a message</span>
+    </div>
+  </div> -->
+</form>

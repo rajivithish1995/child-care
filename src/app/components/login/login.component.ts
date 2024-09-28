@@ -8,6 +8,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent {
   
   loginForm!: FormGroup;
+  formSubmitted = false;
+
   constructor(private fb: FormBuilder) {
     this.createForm();
   }
@@ -31,7 +33,12 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    console.log(this.loginForm);
+    this.formSubmitted = true;
+    if(this.loginForm.invalid) {
+      return 
+    } else {
+     console.log(this.loginForm)
+    }
   }
 
 }
