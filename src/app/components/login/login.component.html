@@ -1,1 +1,57 @@
-<p>login works!</p>
+
+<section class="container-fluid" role="login">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="row g-3">
+            <div class="col-md-12 mb-3">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" inputmode="text" formControlName="firstName" autofocus="true" tabindex="0" class="form-control" id="firstName" placeholder="John">
+              </div>
+              <div class="col-md-12 mb-3">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" inputmode="text" formControlName="lastName" class="form-control" tabindex="0"  id="lastName" placeholder="Stewart">
+              </div>
+              <div class="col-md-12 mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" inputmode="email" formControlName="email"  class="form-control" id="email" tabindex="0"  placeholder="john@gmail.com">
+              </div>
+        
+              <div class="col-md-12 mb-3">
+                <label for="pass" class="form-label">Last Name</label>
+                <input type="password" inputmode="text" formControlName="email"  class="form-control" id="pass" tabindex="0"  placeholder="john@gmail.com">
+              </div>
+        </div>
+
+      <button type="button" class="btn btn-primary">Register</button>
+
+
+      <!-- <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name</label>
+        <textarea class="form-control" id="lastName" rows="3"></textarea>
+      </div> -->
+      
+      <!-- <div class="container">
+        <label for="name"> Name:</label>
+        <input id="name" formControlName="name" placeholder="Your name" />
+        <div *ngIf="f['name']['touched'] && f['name']['invalid']">
+          <span style="color: red;" *ngIf="f?.['name']?.['errors']?.['required']">Please provide a name</span>
+        </div>
+      </div>
+      <div class="container">
+        <label for="email"> Email: </label>
+        <input id="email" formControlName="email" placeholder="Your email" />
+        <div *ngIf="f['email']['touched'] && f['email']['invalid']">
+          <span style="color: red;" *ngIf="f?.['email']?.['errors']?.['required']">Please provide a email</span>
+          <span style="color: red;" *ngIf="f?.['email']?.['errors']?.['email']">Please provide a valid email</span>
+        </div>
+      </div>
+      <div class="container">
+        <label for="message">
+          Message:
+        </label>
+        <input id="message" formControlName="message" placeholder="Your message" />
+        <div *ngIf="f['message']['touched'] && f['message']['invalid']">
+          <span style="color: red;" *ngIf="f?.['message']?.['errors']?.['required']">Please provide a message</span>
+        </div>
+      </div> -->
+    </form>
+</section>
